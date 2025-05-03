@@ -76,3 +76,30 @@
   </section>
 </body>
 </html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('black-roses.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'Georgia', serif;
+      color: white;
+    }
+
+    /* Optional: dark overlay for contrast */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+  </style>
+</head>
