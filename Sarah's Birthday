@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, My Princess SARAH 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: #fff0f5;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #b30059;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .reasons {
+      background: #ffe6f0;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .reasons ul {
+      list-style: none;
+      padding: 0;
+    }
+    .reasons li {
+      background: #fff;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    audio {
+      display: block;
+      margin: 2rem auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Happy Birthday, My Princess SARAH 💖</h1>
+    <p>To the one who lights up my world with her smile.</p>
+  </header>
+
+  <section>
+    <h2>🎵 Our Song</h2>
+    <audio controls autoplay loop>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+
+    <h2>👑 Princess Gallery</h2>
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/en/8/8e/Wonder_Woman_%282017_film%29.jpg" alt="Wonder Woman">
+      <img src="https://upload.wikimedia.org/wikipedia/en/f/fb/Mera_%28DC_Comics_character%29.jpg" alt="Mera">
+      <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/Zatanna_%28DC_Comics_character%29.png" alt="Zatanna">
+    </div>
+
+    <h2>❤️ Reasons I Love You</h2>
+    <div class="reasons">
+      <ul>
+        <li>You make the world softer and brighter.</li>
+        <li>Your smile is magic.</li>
+        <li>You’re my safe place.</li>
+        <li>Every moment with you feels like a fairy tale.</li>
+        <li>You’re not just beautiful — you’re my beautiful.</li>
+      </ul>
+    </div>
+
+    <h2>💌 My Birthday Wish to You</h2>
+    <p>
+      Happy Birthday, Hike. You are the light in my life, the calm in my storm, and the queen of my heart. I’m so lucky to walk this journey with you. Today is your day, but every day with you feels like a celebration. I love you beyond words. 💗
+    </p>
+  </section>
+
+  <footer>
+    Made with love by someone who adores you endlessly. 💕
+  </footer>
+</body>
+</html>
