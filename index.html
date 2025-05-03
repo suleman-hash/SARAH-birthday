@@ -1,46 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Sarah 💖</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #ffdee9, #b5fffc);
-      color: #333;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header {
-      padding: 2em;
-    }
-    h1 {
-      font-size: 2.5em;
-      color: #e91e63;
-    }
-    section {
-      padding: 1.5em;
-      max-width: 800px;
-      margin: auto;
-    }
-    .gallery img {
-      width: 150px;
-      margin: 10px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .reasons, .wishes {
-      background: #fff0f6;
-      padding: 1em;
-      margin: 1em 0;
-      border-radius: 10px;
-    }
-    audio {
-      margin-top: 1em;
-    }
-  </style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url('black-roses.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Georgia', serif;
+    color: white;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+  }
+</style>
+
 </head>
 <body>
   <header>
@@ -76,30 +61,3 @@
   </section>
 </body>
 </html>
-<head>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url('black-roses.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      font-family: 'Georgia', serif;
-      color: white;
-    }
-
-    /* Optional: dark overlay for contrast */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
-    }
-  </style>
-</head>
