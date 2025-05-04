@@ -340,7 +340,15 @@
   z-index: -1; /* keeps it behind everything */
   pointer-events: none; /* allows you to click other elements */
 }
-    
+    .typewriter-section {
+  font-family: 'Courier New', monospace;
+  font-size: 1.5em;
+  color: #e91e63;
+  text-align: center;
+  margin-top: 30px;
+  min-height: 50px;
+}
+
   </style>
 </head>
 <body>
@@ -373,6 +381,10 @@
     <h2>Princess Gallery 👑</h2>
     <p>Sorry, I don’t have your photos. Really, really sorry!</p>
   </section>
+  
+<section class="typewriter-section">
+  <h2 id="typewriter-text"></h2>
+</section>
   
 <section class="gift-section">
   <h2>Your Surprise Gift 🎁</h2>
@@ -524,7 +536,19 @@ function draw() {
 
 draw();
 </script>
-
+  
+  <script>
+  const text = "Happy Birthday, Sarah. You are my favorite story that fate has written.";
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("typewriter-text").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, 80);
+    }
+  }
+  window.onload = typeWriter;
+</script>
 </body>
 </html>
 
