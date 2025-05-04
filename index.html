@@ -84,7 +84,34 @@
   min-height: 100px;
   transition: opacity 0.5s ease;
 }
- 
+    .name-reveal {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.reveal-text {
+  font-size: 3em;
+  color: #ff69b4;
+  letter-spacing: 0.5em;
+  opacity: 0;
+  animation: fadeInLetters 5s forwards;
+  text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+}
+
+@keyframes fadeInLetters {
+  0% {
+    opacity: 0;
+    letter-spacing: 2em;
+  }
+  50% {
+    opacity: 0.5;
+    letter-spacing: 0.7em;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.5em;
+  }
+    
  }\
 </style>
 </head>
@@ -106,6 +133,10 @@
      <p>"Sorry, dont have any of your photo Really Really Sorry !!!""</p> 
     
     
+  </section>
+    
+    <section class="name-reveal">
+  <h2 class="reveal-text">S A R A H</h2>
   </section>
 
   <section class="reasons">
