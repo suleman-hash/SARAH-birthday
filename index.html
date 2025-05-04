@@ -272,6 +272,87 @@
     <p>If I could write every reason I love you on the stars, the night sky would never be dark again.</p>
     <p>You’re the melody in my silence, the warmth in my winter, and the forever I didn’t know I was searching for.</p>
   </section>
+  
+<section class="candle-section">
+  <h2>🕯️ Blow the Candles!</h2>
+  <div class="cake-container">
+    <img src="https://i.imgur.com/Ce5NeNR.png" alt="Birthday Cake" class="cake">
+    <div class="candles">
+      <div class="flame" id="flame1"></div>
+      <div class="flame" id="flame2"></div>
+      <div class="flame" id="flame3"></div>
+    </div>
+  </div>
+  <button onclick="blowCandles()">Blow Candles 🎉</button>
+  <div id="wish-message" class="hidden">
+    <p>💖 Happy Birthday, Sarah! May your wishes come true and your days be filled with love and magic!</p>
+  </div>
+</section>
+
+<style>
+.candle-section {
+  margin: 40px auto;
+  text-align: center;
+  background: #fff0f6;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cake-container {
+  position: relative;
+  display: inline-block;
+}
+
+.cake {
+  width: 200px;
+}
+
+.candles {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 25px;
+}
+
+.flame {
+  width: 10px;
+  height: 20px;
+  background: orange;
+  border-radius: 50% 50% 0 0;
+  animation: flicker 0.2s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0.6; transform: scaleY(1.2); }
+}
+
+.hidden {
+  display: none;
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #d81b60;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+
+<script>
+function blowCandles() {
+  document.getElementById('flame1').style.display = 'none';
+  document.getElementById('flame2').style.display = 'none';
+  document.getElementById('flame3').style.display = 'none';
+  document.getElementById('wish-message').classList.remove('hidden');
+}
+</script>
 
   <section class="reason-carousel">
     <h2>100 Reasons I Love You 💘</h2>
