@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style><head>
+  <meta charset="UTF-8">
+  <title>Sarah's Birthday</title>
+  
+  <!-- Your custom background video style -->
+  <style>
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    /* Optional dark overlay to improve text readability */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+  </style>
+</head>
+</style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday Sarah 💖</title>
@@ -44,6 +74,10 @@
 </head>
 <body>
  <body>
+   <video autoplay muted loop id="bgVideo">
+  <source src="background.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 <audio controls autoplay loop>
   <source src="romantic.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
