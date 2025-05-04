@@ -93,6 +93,42 @@
         transform: translateY(-100vh) scale(1.5);
         opacity: 0;
       }
+      .animated-name {
+  font-size: 3em;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+  animation: glow-fade 2s ease-in-out infinite alternate, fadeIn 3s ease-in-out forwards;
+  text-shadow:
+    0 0 5px #ff4da6,
+    0 0 10px #ff4da6,
+    0 0 20px #ff4da6,
+    0 0 40px #ff4da6;
+  opacity: 0;
+}
+
+/* Glowing animation */
+@keyframes glow-fade {
+  from {
+    text-shadow:
+      0 0 5px #ff4da6,
+      0 0 10px #ff4da6,
+      0 0 20px #ff4da6;
+  }
+  to {
+    text-shadow:
+      0 0 20px #ff4da6,
+      0 0 30px #ff4da6,
+      0 0 40px #ff4da6;
+  }
+}
+
+/* Fade in effect */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
     }
   </style>
 </head>
@@ -112,6 +148,8 @@
     <h1 class="glow">Happy Birthday My Princess Sarah 💖</h1>
     <p>Here’s a little surprise, made with love.</p>
   </header>
+  
+<div class="animated-name">SARAH.M</div>
 
   <!-- Gallery -->
   <section class="gallery">
