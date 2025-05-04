@@ -331,6 +331,16 @@
 }
     
 }
+    #fireflies {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* keeps it behind everything */
+  pointer-events: none; /* allows you to click other elements */
+}
+    
   </style>
 </head>
 <body>
@@ -475,6 +485,44 @@
     current = (current + 1) % slides.length;
     showSlide(current);
   }, 3000);
+</script>
+  
+ <canvas id="fireflies"></canvas>
+  <script>
+const canvas = document.getElementById("fireflies");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 100; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 2 + 1,
+    dx: (Math.random() - 0.5) * 0.5,
+    dy: (Math.random() - 0.5) * 0.5
+  });
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#ffff99"; // glowing yellow
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+  requestAnimationFrame(draw);
+}
+
+draw();
 </script>
 
 </body>
