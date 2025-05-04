@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Happy Birthday Sarah</title>
   <style>
     body {
@@ -33,6 +33,24 @@
       }
     }
 
+    .animated-name {
+      font-size: 2.2em;
+      font-weight: bold;
+      color: #ff4081;
+      animation: glow 1.5s ease-in-out infinite alternate;
+      margin-top: 10px;
+      text-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081;
+      }
+      to {
+        text-shadow: 0 0 20px #ff80ab, 0 0 30px #ff80ab;
+      }
+    }
+
     section {
       padding: 1.5em;
       max-width: 800px;
@@ -46,7 +64,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    .reasons, .wishes, .dreams, .reason-carousel {
+    .reasons, .wishes, .dreams, .reason-carousel, .love-letters {
       background: #fff0f6;
       padding: 1em;
       margin: 1.5em auto;
@@ -62,7 +80,6 @@
       transition: all 0.5s ease-in-out;
     }
 
-    /* Floating Hearts Animation */
     .hearts-container {
       position: fixed;
       top: 0;
@@ -76,329 +93,179 @@
     .heart {
       width: 20px;
       height: 20px;
-      background: pink;
+      background-color: pink;
       position: absolute;
-      top: 100%;
-      animation: float 6s linear infinite;
+      bottom: 0;
+      left: 50%;
+      animation: float 4s infinite ease-in;
       transform: rotate(45deg);
-      border-radius: 50% 50% 0 0;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
     }
 
     @keyframes float {
       0% {
-        transform: translateY(0) scale(1);
+        transform: translateX(0) translateY(0) rotate(45deg);
         opacity: 1;
       }
       100% {
-        transform: translateY(-100vh) scale(1.5);
+        transform: translateX(-50px) translateY(-150px) rotate(45deg);
         opacity: 0;
       }
-
     }
-   .animated-name {
-  font-size: 3em;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  margin-top: 20px;
-  animation: glow-fade 2s ease-in-out infinite alternate, fadeIn 3s ease-in-out forwards;
-  text-shadow:
-    0 0 5px #ff4da6,
-    0 0 10px #ff4da6,
-    0 0 20px #ff4da6,
-    0 0 40px #ff4da6;
-  opacity: 0;
-}
 
-/* Glowing animation */
-@keyframes glow-fade {
-  from {
-    text-shadow:
-      0 0 5px #ff4da6,
-      0 0 10px #ff4da6,
-      0 0 20px #ff4da6;
-  }
-  to {
-    text-shadow:
-      0 0 20px #ff4da6,
-      0 0 30px #ff4da6,
-      0 0 40px #ff4da6;
-  }
-}
+    .quote {
+      font-style: italic;
+      color: #d81b60;
+      font-size: 1.2em;
+      margin-top: 10px;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
 
-/* Fade in effect */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-  .hearts-container {
-  position: relative;
-  height: 100px;
-}
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
 
-.heart {
-  width: 20px;
-  height: 20px;
-  background-color: pink;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  animation: float 4s infinite ease-in;
-  transform: rotate(45deg);
-}
+    .hidden {
+      display: none;
+    }
 
-.heart::before,
-.heart::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: pink;
-  border-radius: 50%;
-}
+    .gift-section {
+      margin: 50px auto;
+      text-align: center;
+    }
 
-.heart::before {
-  top: -10px;
-  left: 0;
-}
+    .gift-box {
+      width: 100px;
+      height: 100px;
+      background: #e91e63;
+      position: relative;
+      margin: 20px auto;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
 
-.heart::after {
-  left: -10px;
-  top: 0;
-}
+    .gift-box:hover {
+      transform: scale(1.05);
+    }
 
-@keyframes float {
-  0% {
-    transform: translateX(0) translateY(0) rotate(45deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-50px) translateY(-150px) rotate(45deg);
-    opacity: 0;
-  }
-}
-    .animated-name {
-  font-size: 2.2em;
-  font-weight: bold;
-  color: #ff4081;
-  animation: glow 1.5s ease-in-out infinite alternate;
-  margin-top: 10px;
-}
+    .gift-box .lid {
+      width: 100px;
+      height: 30px;
+      background: #c2185b;
+      position: absolute;
+      top: -30px;
+      left: 0;
+      border-radius: 10px 10px 0 0;
+    }
 
-@keyframes glow {
-  from {
-    text-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081;
-  }
-  to {
-    text-shadow: 0 0 20px #ff80ab, 0 0 30px #ff80ab;
-  }
-}
+    #gift-message {
+      margin-top: 20px;
+      background: #fff0f6;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-.hearts-container {
-  position: relative;
-  height: 100px;
-  margin: 10px auto;
-}
+    .slider {
+      position: relative;
+      height: 100px;
+      overflow: hidden;
+    }
 
-.heart {
-  width: 20px;
-  height: 20px;
-  background-color: pink;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  animation: float 4s infinite ease-in;
-  transform: rotate(45deg);
-}
+    .slide {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      font-size: 1.2em;
+      padding: 10px;
+      width: 100%;
+    }
 
-.heart::before,
-.heart::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: pink;
-  border-radius: 50%;
-}
+    .slide.active {
+      opacity: 1;
+    }
 
-.heart::before {
-  top: -10px;
-  left: 0;
-}
-
-.heart::after {
-  left: -10px;
-  top: 0;
-}
-
-@keyframes float {
-  0% {
-    transform: translateX(0) translateY(0) rotate(45deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-50px) translateY(-150px) rotate(45deg);
-    opacity: 0;
-  }
-}
-
-.quote {
-  font-style: italic;
-  color: #d81b60;
-  font-size: 1.2em;
-  margin-top: 10px;
-  animation: fadeIn 2s ease forwards;
-  opacity: 0;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-.hidden {
-  display: none;
-}
-
-.gift-section {
-  margin: 50px auto;
-  text-align: center;
-}
-
-.gift-box {
-  width: 100px;
-  height: 100px;
-  background: #e91e63;
-  position: relative;
-  margin: 20px auto;
-  cursor: pointer;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
-}
-
-.gift-box:hover {
-  transform: scale(1.05);
-}
-
-.gift-box .lid {
-  width: 100px;
-  height: 30px;
-  background: #c2185b;
-  position: absolute;
-  top: -30px;
-  left: 0;
-  border-radius: 10px 10px 0 0;
-}
-
-#gift-message {
-  margin-top: 20px;
-  background: #fff0f6;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.love-letters {
-  margin: 40px auto;
-  padding: 20px;
-  max-width: 600px;
-  background: #fff0f6;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  text-align: center;
-}
-
-.slider {
-  position: relative;
-  height: 100px;
-  overflow: hidden;
-}
-
-.slide {
-  position: absolute;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  font-size: 1.2em;
-  padding: 10px;
-  width: 100%;
-}
-
-.slide.active {
-  opacity: 1;
-}
-    
-}
     #fireflies {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* keeps it behind everything */
-  pointer-events: none; /* allows you to click other elements */
-}
-    .typewriter-section {
-  font-family: 'Courier New', monospace;
-  font-size: 1.5em;
-  color: #e91e63;
-  text-align: center;
-  margin-top: 30px;
-  min-height: 50px;
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
 
+    .typewriter-section {
+      font-family: 'Courier New', monospace;
+      font-size: 1.5em;
+      color: #e91e63;
+      text-align: center;
+      margin-top: 30px;
+      min-height: 50px;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Floating Hearts Container -->
   <div class="hearts-container"></div>
 
-  <!-- Audio -->
   <audio controls autoplay loop>
     <source src="romantic.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Header -->
   <header>
     <h1 class="glow">Happy Birthday My Princess Sarah 💖</h1>
     <div class="animated-name">SARAH.M</div>
-    <div class="hearts-container">
-    <div class="heart"></div>
-    <div class="heart"></div>
-    <div class="heart"></div>
-  </div>
-  <p class="quote">“You're not just in my heart, you are my heart.”</p>
-
+    <p class="quote">“You're not just in my heart, you are my heart.”</p>
     <p>Here’s a little surprise, made with love.</p>
   </header>
 
-  <!-- Gallery -->
   <section class="gallery">
     <h2>Princess Gallery 👑</h2>
     <p>Sorry, I don’t have your photos. Really, really sorry!</p>
   </section>
-  
-<section class="typewriter-section">
-  <h2 id="typewriter-text"></h2>
-</section>
-  
-<section class="gift-section">
-  <h2>Your Surprise Gift 🎁</h2>
-  <div class="gift-box" onclick="openGift()">
-    <div class="lid"></div>
-    <div class="box"></div>
-  </div>
-  <div id="gift-message" class="hidden">
-    <h3>💌 My Heartfelt Gift</h3>
-    <p>Sarah, you are the most precious gift life has given me. I hope one day I can give you everything — a ring, a forever, a home. For now, this gift holds a piece of my heart.</p>
-  </div>
-</section>
 
-  <!-- Reason Section -->
+  <section class="typewriter-section">
+    <h2 id="typewriter-text"></h2>
+  </section>
+
+  <section class="gift-section">
+    <h2>Your Surprise Gift 🎁</h2>
+    <div class="gift-box" onclick="openGift()">
+      <div class="lid"></div>
+    </div>
+    <div id="gift-message" class="hidden">
+      <h3>💌 My Heartfelt Gift</h3>
+      <p>Sarah, you are the most precious gift life has given me. I hope one day I can give you everything — a ring, a forever, a home. For now, this gift holds a piece of my heart.</p>
+    </div>
+  </section>
+
   <section class="reasons">
     <h2>Sarah, The Reasons I Love You 💌</h2>
     <p>You are the most beautiful part of my life — not just because of how you look, but because of how you make me feel.</p>
@@ -406,40 +273,38 @@
     <p>You’re the melody in my silence, the warmth in my winter, and the forever I didn’t know I was searching for.</p>
   </section>
 
-  <!-- Carousel of 100 Reasons -->
   <section class="reason-carousel">
     <h2>100 Reasons I Love You 💘</h2>
     <p id="reason-text">Reason 1: You always believe in me.</p>
   </section>
 
-  <!-- Birthday Wishes -->
   <section class="wishes">
     <h2>Birthday Wishes to the Cutie 🎂</h2>
     <p>Sarah, on this special day, I just want to say how lucky I am to have you.</p>
     <p>You are my light, my joy, and my everything. May this year bring you as much happiness as you bring to my life.</p>
     <p><strong>“Even in lifetimes beyond this one, I’ll still choose you. Again and again.”</strong></p>
   </section>
-  
-<section class="love-letters">
-  <h2>Mini Love Letters 💌</h2>
-  <div class="slider">
-    <div class="slide active">"You're the reason I believe in magic again."</div>
-    <div class="slide">"Every love story is beautiful, but ours is my favorite."</div>
-    <div class="slide">"You’re not just in my heart — you are my heart."</div>
-    <div class="slide">"If I had to dream up the perfect person, it’d be you."</div>
-    <div class="slide">"Loving you feels like coming home."</div>
-  </div>
-</section>
 
-  <!-- Dreams to Come True -->
+  <section class="love-letters">
+    <h2>Mini Love Letters 💌</h2>
+    <div class="slider">
+      <div class="slide active">"You're the reason I believe in magic again."</div>
+      <div class="slide">"Every love story is beautiful, but ours is my favorite."</div>
+      <div class="slide">"You’re not just in my heart — you are my heart."</div>
+      <div class="slide">"If I had to dream up the perfect person, it’d be you."</div>
+      <div class="slide">"Loving you feels like coming home."</div>
+    </div>
+  </section>
+
   <section class="dreams">
     <h2>Dreams to Come True 💖</h2>
     <p>I’ve always believed that dreams are whispers from the heart — soft, impossible things we keep hidden.</p>
-    <p>"This is just the beginning of what I want to build with you — not just pages on a screen, but memories, journeys, and dreams that last a lifetime. Every picture, every reason, every word here is a step toward a future I see only with you. Happy birthday, love. I hope this brings you even a fraction of the joy you bring me."</p>
+    <p>"This is just the beginning of what I want to build with you — not just pages on a screen, but memories, journeys, and dreams that last a lifetime."</p>
     <strong>Yours forever,<br>SULEMAN ⸙</strong>
   </section>
 
-  <!-- JS for Carousel and Hearts -->
+  <canvas id="fireflies"></canvas>
+
   <script>
     const reasons = [
       "You always believe in me.",
@@ -452,7 +317,7 @@
       "You understand me without words.",
       "You have the kindest heart.",
       "You make everything feel magical.",
-      // ...add more up to 100
+      // continue up to 100...
     ];
 
     let i = 0;
@@ -461,7 +326,6 @@
       document.getElementById('reason-text').innerText = `Reason ${i + 1}: ${reasons[i]}`;
     }, 2500);
 
-    // Floating hearts generator
     const heartsContainer = document.querySelector('.hearts-container');
     function createHeart() {
       const heart = document.createElement('div');
@@ -472,84 +336,73 @@
       setTimeout(() => heart.remove(), 6000);
     }
     setInterval(createHeart, 300);
-  </script>
-  
-<script>
-  function openGift() {
-    document.getElementById('gift-message').classList.remove('hidden');
-    const box = document.querySelector('.gift-box');
-    box.style.transform = 'rotateX(180deg)';
-  }
-</script>
-  
-<script>
-  const slides = document.querySelectorAll('.slide');
-  let current = 0;
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove('active');
-      if (i === index) slide.classList.add('active');
-    });
-  }
-
-  setInterval(() => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  }, 3000);
-</script>
-  
- <canvas id="fireflies"></canvas>
-  <script>
-const canvas = document.getElementById("fireflies");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for (let i = 0; i < 100; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 2 + 1,
-    dx: (Math.random() - 0.5) * 0.5,
-    dy: (Math.random() - 0.5) * 0.5
-  });
-}
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "#ffff99"; // glowing yellow
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-    ctx.fill();
-    p.x += p.dx;
-    p.y += p.dy;
-    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-  });
-  requestAnimationFrame(draw);
-}
-
-draw();
-</script>
-  
-  <script>
-  const text = "Happy Birthday, Sarah. You are my favorite story that fate has written.";
-  let i = 0;
-  function typeWriter() {
-    if (i < text.length) {
-      document.getElementById("typewriter-text").innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 80);
+    function openGift() {
+      document.getElementById('gift-message').classList.remove('hidden');
+      const box = document.querySelector('.gift-box');
+      box.style.transform = 'rotateX(180deg)';
     }
-  }
-  window.onload = typeWriter;
-</script>
+
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) slide.classList.add('active');
+      });
+    }
+    setInterval(() => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }, 3000);
+
+    // Fireflies
+    const canvas = document.getElementById("fireflies");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5
+      });
+    }
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#ffff99";
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+    // Typewriter
+    const text = "Happy Birthday, Sarah. You are my favorite story that fate has written.";
+    let t = 0;
+    function typeWriter() {
+      if (t < text.length) {
+        document.getElementById("typewriter-text").innerHTML += text.charAt(t);
+        t++;
+        setTimeout(typeWriter, 80);
+      }
+    }
+    window.onload = typeWriter;
+  </script>
+
 </body>
 </html>
+
+
 
 
