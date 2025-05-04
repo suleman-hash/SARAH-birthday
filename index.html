@@ -301,7 +301,35 @@
   margin-left: auto;
   margin-right: auto;
 }
+.love-letters {
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 600px;
+  background: #fff0f6;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+}
 
+.slider {
+  position: relative;
+  height: 100px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  font-size: 1.2em;
+  padding: 10px;
+  width: 100%;
+}
+
+.slide.active {
+  opacity: 1;
+}
+    
 }
   </style>
 </head>
@@ -419,6 +447,23 @@
     const box = document.querySelector('.gift-box');
     box.style.transform = 'rotateX(180deg)';
   }
+</script>
+  
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      if (i === index) slide.classList.add('active');
+    });
+  }
+
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 3000); // changes every 3 seconds
 </script>
 
 </body>
