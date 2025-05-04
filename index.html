@@ -93,7 +93,9 @@
         transform: translateY(-100vh) scale(1.5);
         opacity: 0;
       }
-      .animated-name {
+
+    }
+   .animated-name {
   font-size: 3em;
   font-weight: bold;
   color: #fff;
@@ -129,7 +131,132 @@
   to {
     opacity: 1;
   }
-    }
+  .hearts-container {
+  position: relative;
+  height: 100px;
+}
+
+.heart {
+  width: 20px;
+  height: 20px;
+  background-color: pink;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  animation: float 4s infinite ease-in;
+  transform: rotate(45deg);
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: pink;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateX(0) translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50px) translateY(-150px) rotate(45deg);
+    opacity: 0;
+  }
+}
+    .animated-name {
+  font-size: 2.2em;
+  font-weight: bold;
+  color: #ff4081;
+  animation: glow 1.5s ease-in-out infinite alternate;
+  margin-top: 10px;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081;
+  }
+  to {
+    text-shadow: 0 0 20px #ff80ab, 0 0 30px #ff80ab;
+  }
+}
+
+.hearts-container {
+  position: relative;
+  height: 100px;
+  margin: 10px auto;
+}
+
+.heart {
+  width: 20px;
+  height: 20px;
+  background-color: pink;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  animation: float 4s infinite ease-in;
+  transform: rotate(45deg);
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: pink;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateX(0) translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50px) translateY(-150px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.quote {
+  font-style: italic;
+  color: #d81b60;
+  font-size: 1.2em;
+  margin-top: 10px;
+  animation: fadeIn 2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -146,10 +273,16 @@
   <!-- Header -->
   <header>
     <h1 class="glow">Happy Birthday My Princess Sarah 💖</h1>
+    <div class="animated-name">SARAH.M</div>
+    <div class="hearts-container">
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+  </div>
+  <p class="quote">“You're not just in my heart, you are my heart.”</p>
+
     <p>Here’s a little surprise, made with love.</p>
   </header>
-  
-<div class="animated-name">SARAH.M</div>
 
   <!-- Gallery -->
   <section class="gallery">
