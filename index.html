@@ -397,6 +397,17 @@
     <p>You are my light, my joy, and my everything. May this year bring you as much happiness as you bring to my life.</p>
     <p><strong>“Even in lifetimes beyond this one, I’ll still choose you. Again and again.”</strong></p>
   </section>
+  
+<section class="love-letters">
+  <h2>Mini Love Letters 💌</h2>
+  <div class="slider">
+    <div class="slide active">"You're the reason I believe in magic again."</div>
+    <div class="slide">"Every love story is beautiful, but ours is my favorite."</div>
+    <div class="slide">"You’re not just in my heart — you are my heart."</div>
+    <div class="slide">"If I had to dream up the perfect person, it’d be you."</div>
+    <div class="slide">"Loving you feels like coming home."</div>
+  </div>
+</section>
 
   <!-- Dreams to Come True -->
   <section class="dreams">
@@ -451,7 +462,7 @@
   
 <script>
   const slides = document.querySelectorAll('.slide');
-  let currentSlide = 0;
+  let current = 0;
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
@@ -461,9 +472,9 @@
   }
 
   setInterval(() => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }, 3000); // changes every 3 seconds
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }, 3000);
 </script>
 
 </body>
