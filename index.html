@@ -269,7 +269,7 @@
   }
   </style>
 
-  <style>
+ <style>
 .open-when-section {
       background: #fff0f6;
       padding: 2em;
@@ -363,7 +363,6 @@
     opacity: 0; /* Fade out */
   }
 }
-    
  </style>
 </head>
 <body>
@@ -522,13 +521,13 @@ function blowCandles() {
   </section>
   
   <section class="open-when-section">
-    <h2>Open The WEB When...</h2>
+    <h2>Open When...</h2>
     <div class="envelopes">
-      <div class="envelope" onclick="showMessage('When you need a laugh')">
-        <p>Open The WEB when you feel you are Alone!</p>
+      <div class="envelope" onclick="showMessage('When when you feel you are Alone!')">
+        <p>Open when you feel you are Alone!</p>
       </div>
-      <div class="envelope" onclick="showMessage('When you're feeling down')">
-        <p>Open The WEB when you want to Laugh and want comfort!</p>
+      <div class="envelope" onclick="showMessage('When you want to Laugh and want comfort!')">
+        <p>Open when you want to Laugh and want comfort!</p>
       </div>
       <div class="envelope" onclick="showMessage('When you want to remember our love')">
         <p>Open when you want to remember our Love!</p>
@@ -685,7 +684,8 @@ function blowCandles() {
     }, 5000);
   }
 </script>
-  
+
+  <script>
   function openEnvelope(type) {
   const messageBox = document.getElementById("envelope-message");
   let message = "";
@@ -701,7 +701,8 @@ function blowCandles() {
   messageBox.textContent = message;
   messageBox.classList.remove("hidden");
 }
-  
+    
+</script>
 </body>
 </html>
 
