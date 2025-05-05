@@ -365,8 +365,47 @@
     opacity: 0;
   }
 }
+.heart {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  animation: pulse 1.5s infinite;
+}
 
- </style>
+.heart::before,
+.heart::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: 10px;
+  top: 0;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1) rotate(-45deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(-45deg);
+  }
+}
+
+</style>
 </head>
 <body>
 
@@ -716,18 +755,22 @@ function blowCandles() {
   function createBottle() {
     const bottle = document.createElement("div");
     bottle.className = "bottle";
+
+    // Add a heart inside the bottle
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    bottle.appendChild(heart);
+
     document.getElementById("bottle-container").appendChild(bottle);
 
-    // Remove bottle after animation to clean up
+    // Remove bottle after animation
     setTimeout(() => {
       bottle.remove();
     }, 5000);
   }
 
-  // Create a bottle every 2 seconds
+  // Start animation
   setInterval(createBottle, 2000);
-
-  // Start with one immediately
   createBottle();
 </script>
 </body>
