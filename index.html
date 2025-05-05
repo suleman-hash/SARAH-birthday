@@ -328,42 +328,44 @@
     </style>
   
   <style>
-    /* Basic styling for the Wish in a Bottle section */
-.wish-in-bottle {
+  .wish-in-bottle {
   text-align: center;
   padding: 2em;
-  background: #f3f3f3;
+  background: #fce4ec;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 #bottle-container {
   position: relative;
   height: 300px;
-  overflow: hidden; /* Hides the bottle when it rises out of view */
+  overflow: hidden;
+  border: 2px dashed #ccc;
+  margin-top: 1em;
 }
 
 .bottle {
-  width: 50px; /* Bottle width */
-  height: 200px; /* Bottle height */
-  background-color: #e91e63; /* bright pink  */
+  width: 50px;
+  height: 120px;
+  background-color: #e91e63;
   position: absolute;
   left: 50%;
+  bottom: 0;
   transform: translateX(-50%);
-  border-radius: 10px; /* Rounded bottle edges */
-  animation: riseAndFade 5s infinite alternate;
+  border-radius: 10px;
+  animation: riseAndFade 5s linear forwards;
 }
 
 @keyframes riseAndFade {
   0% {
-    transform: translateY(0); /* Start at the bottom */
-    opacity: 1; /* Fully visible */
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
   }
   100% {
-    transform: translateY(-500px); /* Move up */
-    opacity: 0; /* Fade out */
+    transform: translateX(-50%) translateY(-300px);
+    opacity: 0;
   }
 }
+
  </style>
 </head>
 <body>
@@ -536,12 +538,10 @@ function blowCandles() {
     </div>
     <div id="message-box" class="message-box hidden"></div>
   </section>
-
-  <section class="wish-in-bottle">
+  
+<section class="wish-in-bottle">
   <h2>Wish in a Bottle</h2>
-  <div id="bottle-container">
-    <div class="bottle"></div>
-  </div>
+  <div id="bottle-container"></div>
 </section>
 
 <section class="dreams">
@@ -710,6 +710,25 @@ function blowCandles() {
   messageBox.classList.remove("hidden");
 }
     
+</script>
+  
+<script>
+  function createBottle() {
+    const bottle = document.createElement("div");
+    bottle.className = "bottle";
+    document.getElementById("bottle-container").appendChild(bottle);
+
+    // Remove bottle after animation to clean up
+    setTimeout(() => {
+      bottle.remove();
+    }, 5000);
+  }
+
+  // Create a bottle every 2 seconds
+  setInterval(createBottle, 2000);
+
+  // Start with one immediately
+  createBottle();
 </script>
 </body>
 </html>
