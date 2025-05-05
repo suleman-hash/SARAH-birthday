@@ -268,6 +268,63 @@
     z-index: 30;
   }
   </style>
+
+  <style>
+.open-when-section {
+      background: #fff0f6;
+      padding: 2em;
+      border-radius: 15px;
+      max-width: 700px;
+      margin: 30px auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .envelopes {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .envelope {
+      background-color: #ffc0cb;
+      padding: 1em 2em;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      font-weight: bold;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+      background-color: #ffb6c1;
+    }
+
+    .message-box {
+      margin-top: 20px;
+      background: #fff;
+      padding: 1.5em;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .bottle {
+      width: 50px;
+      height: 200px;
+      background-color: #e91e63;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      animation: bottleAnimation 5s infinite alternate;
+    }
+
+    @keyframes bottleAnimation {
+      0% { transform: translateY(0) translateX(-50%); opacity: 1; }
+      100% { transform: translateY(-500px) translateX(-50%); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
 
@@ -423,6 +480,22 @@ function blowCandles() {
       <div class="slide">"Loving you feels like coming home."</div>
     </div>
   </section>
+  
+  <section class="open-when-section">
+    <h2>Open When...</h2>
+    <div class="envelopes">
+      <div class="envelope" onclick="showMessage('When you need a laugh')">
+        <p>Open when you feel you are Alone!</p>
+      </div>
+      <div class="envelope" onclick="showMessage('When you're feeling down')">
+        <p>Open when you're feeling down!</p>
+      </div>
+      <div class="envelope" onclick="showMessage('When you want to remember our love')">
+        <p>Open when you want to remember our love!</p>
+      </div>
+    </div>
+    <div id="message-box" class="message-box hidden"></div>
+  </section>
 
   <section class="dreams">
     <h2>Dreams to Come True 💖</h2>
@@ -572,6 +645,22 @@ function blowCandles() {
     }, 5000);
   }
 </script>
+  function openEnvelope(type) {
+  const messageBox = document.getElementById("envelope-message");
+  let message = "";
+
+  if (type === "sad") {
+    message = "Hey, beautiful. It’s okay to have down days. I’m always here to lift you up. ❤️";
+  } else if (type === "happy") {
+    message = "Seeing you happy is the best feeling in the world. I want to share all your joys. 🥰";
+  } else if (type === "miss") {
+    message = "I miss you too, more than words can say. Here’s a warm hug wrapped in code 🤗.";
+  }
+
+  messageBox.textContent = message;
+  messageBox.classList.remove("hidden");
+}
+  
 </body>
 </html>
 
