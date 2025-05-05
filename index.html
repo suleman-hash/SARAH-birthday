@@ -365,6 +365,7 @@
     opacity: 0;
   }
 }
+    
 .heart {
   width: 20px;
   height: 20px;
@@ -403,6 +404,22 @@
   50% {
     transform: translate(-50%, -50%) scale(1.2) rotate(-45deg);
   }
+  
+}
+.message {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff8dc;
+  color: #333;
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  white-space: nowrap;
+  z-index: 10;
 }
 
 </style>
@@ -756,20 +773,24 @@ function blowCandles() {
     const bottle = document.createElement("div");
     bottle.className = "bottle";
 
-    // Add a heart inside the bottle
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    bottle.appendChild(heart);
+    // Create message element (hidden at first)
+    const message = document.createElement("div");
+    message.className = "message";
+    message.innerText = "Your wish is on its way!";
+    bottle.appendChild(message);
+
+    // Show message on click
+    bottle.addEventListener("click", () => {
+      message.style.display = "block";
+    });
 
     document.getElementById("bottle-container").appendChild(bottle);
 
-    // Remove bottle after animation
     setTimeout(() => {
       bottle.remove();
     }, 5000);
   }
 
-  // Start animation
   setInterval(createBottle, 2000);
   createBottle();
 </script>
