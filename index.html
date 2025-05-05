@@ -406,6 +406,7 @@
   }
   
 }
+    
 .message {
   display: none;
   position: absolute;
@@ -420,6 +421,63 @@
   font-family: 'Comic Sans MS', cursive, sans-serif;
   white-space: nowrap;
   z-index: 10;
+}
+    
+.message {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff8dc;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-family: 'Comic Sans MS', cursive;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.bottle .message.show {
+  display: block;
+  opacity: 1;
+}
+
+    .wish-section {
+  text-align: center;
+  margin-top: 50px;
+  position: relative;
+}
+
+.bottle {
+  width: 60px;
+  height: 120px;
+  background: url('https://i.imgur.com/0H4H0yU.png') no-repeat center center / contain;
+  margin: 0 auto;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #fff;
+  display: none;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 </style>
@@ -595,10 +653,10 @@ function blowCandles() {
     <div id="message-box" class="message-box hidden"></div>
   </section>
   
-<section class="wish-in-bottle">
-  <h2>Wish in a Bottle</h2>
-  <div id="bottle-container"></div>
-</section>
+<div class="wish-section">
+  <div class="bottle" id="bottle"></div>
+  <div class="message" id="wishMessage"></div>
+</div>
 
 <section class="dreams">
     <h2>Dreams to Come True 💖</h2>
@@ -767,32 +825,24 @@ function blowCandles() {
 }
     
 </script>
-  
+
 <script>
-  function createBottle() {
-    const bottle = document.createElement("div");
-    bottle.className = "bottle";
+  const bottle = document.getElementById("bottle");
+  const message = document.getElementById("wishMessage");
 
-    // Create message element (hidden at first)
-    const message = document.createElement("div");
-    message.className = "message";
-    message.innerText = "Your wish is on its way!";
-    bottle.appendChild(message);
+  const messages = [
+    "I love you more than words can say 💖",
+    "You're the reason my heart beats faster 💓",
+    "Every moment with you is a treasure 🫶",
+    "You're my dream come true ✨",
+    "Forever isn’t long enough with you ❤️",
+  ];
 
-    // Show message on click
-    bottle.addEventListener("click", () => {
-      message.style.display = "block";
-    });
-
-    document.getElementById("bottle-container").appendChild(bottle);
-
-    setTimeout(() => {
-      bottle.remove();
-    }, 5000);
-  }
-
-  setInterval(createBottle, 2000);
-  createBottle();
+  bottle.addEventListener("click", () => {
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    message.innerText = messages[randomIndex];
+    message.style.display = "block";
+  });
 </script>
 </body>
 </html>
