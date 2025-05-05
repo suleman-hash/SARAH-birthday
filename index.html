@@ -228,6 +228,71 @@
       margin-top: 30px;
       min-height: 50px;
     }
+    <style>
+  #starfall-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .star {
+    position: absolute;
+    background: white;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+    cursor: pointer;
+  }
+
+  .shooting-star {
+    width: 2px;
+    height: 2px;
+    background: gold;
+    box-shadow: 0 0 10px 2px gold;
+    animation: shooting 1.2s ease-in-out forwards;
+  }
+
+  @keyframes fall {
+    from {
+      transform: translateY(-10%);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(110%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes shooting {
+    0% {
+      transform: translate(0, 0) rotate(45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(500px, 300px) rotate(45deg);
+      opacity: 0;
+    }
+  }
+
+  #wish-popup {
+    background-color: #fff;
+    padding: 20px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadeIn 0.6s ease-in-out;
+    z-index: 1000;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9) translate(-50%, -50%); }
+    to { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+  }
+    
   </style>
 </head>
 <body>
@@ -273,6 +338,18 @@
     <p>You’re the melody in my silence, the warmth in my winter, and the forever I didn’t know I was searching for.</p>
   </section>
   
+  <!-- Shooting Star Wish Section -->
+<section id="starfall-section" class="relative h-screen bg-black overflow-hidden text-white flex items-center justify-center">
+  <div id="wish-popup" class="absolute bg-white text-black p-4 rounded-xl shadow-xl hidden z-50"></div>
+  <div class="text-center z-10">
+    <h2 class="text-3xl font-bold mb-4">Click a Star & Make a Wish 🌠</h2>
+    <p>Some stars hold messages, and one grants a surprise 💖<!-- Shooting Star Wish Section -->
+  </div>
+</section>
+</p>
+  </div>
+</section>
+
 <section class="candle-section">
   <h2>🕯️ Blow the Candles!</h2>
   <div class="cake-container">
@@ -480,7 +557,52 @@ function blowCandles() {
     }
     window.onload = typeWriter;
   </script>
+  
+  <script>
+  const section = document.getElementById("starfall-section");
+  const popup = document.getElementById("wish-popup");
+  const wishes = [
+    "You light up my life like the stars ✨",
+    "Every moment with you is a wish come true 💫",
+    "You're the galaxy to my heart 💖",
+    "Forever yours, through all the stars ⭐",
+    "You're my once-in-a-lifetime shooting star 🌠"
+  ];
 
+  // Generate stars
+  for (let i = 0; i < 50; i++) {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.animationDuration = `${3 + Math.random() * 5}s`;
+    star.style.top = `${-Math.random() * 20}px`;
+    star.addEventListener("click", () => {
+      showWish(wishes[Math.floor(Math.random() * wishes.length)]);
+    });
+    section.appendChild(star);
+  }
+
+  // Create shooting star after a delay
+  setTimeout(() => {
+    const shooting = document.createElement("div");
+    shooting.classList.add("star", "shooting-star");
+    shooting.style.top = "10%";
+    shooting.style.left = "5%";
+    shooting.addEventListener("click", () => {
+      showWish("🌟 Surprise! You’re my shooting star. I love you endlessly.");
+    });
+    section.appendChild(shooting);
+  }, 3000);
+
+  // Show popup wish
+  function showWish(message) {
+    popup.textContent = message;
+    popup.classList.remove("hidden");
+    setTimeout(() => {
+      popup.classList.add("hidden");
+    }, 4000);
+  }
+</script>
 </body>
 </html>
 
