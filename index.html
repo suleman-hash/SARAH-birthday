@@ -338,16 +338,13 @@
     <p>You’re the melody in my silence, the warmth in my winter, and the forever I didn’t know I was searching for.</p>
   </section>
   
-  <!-- Shooting Star Wish Section -->
+<!-- Shooting Star Wish Section -->
 <section id="starfall-section" class="relative h-screen bg-black overflow-hidden text-white flex items-center justify-center">
   <div id="wish-popup" class="absolute bg-white text-black p-4 rounded-xl shadow-xl hidden z-50"></div>
-  <div class="text-center z-10">
-    <h2 class="text-3xl font-bold mb-4">Click a Star & Make a Wish 🌠</h2>
-    <p>Some stars hold messages, and one grants a surprise 💖<!-- Shooting Star Wish Section -->
-  </div>
-</section>
-</p>
-  </div>
+  
+  <button id="makeWishBtn" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full z-10">
+    Make a Wish 🌠
+  </button>
 </section>
 
 <section class="candle-section">
@@ -558,9 +555,11 @@ function blowCandles() {
     window.onload = typeWriter;
   </script>
   
-  <script>
+ <script>
   const section = document.getElementById("starfall-section");
   const popup = document.getElementById("wish-popup");
+  const button = document.getElementById("makeWishBtn");
+
   const wishes = [
     "You light up my life like the stars ✨",
     "Every moment with you is a wish come true 💫",
@@ -569,32 +568,35 @@ function blowCandles() {
     "You're my once-in-a-lifetime shooting star 🌠"
   ];
 
-  // Generate stars
+  // Generate passive twinkling stars
   for (let i = 0; i < 50; i++) {
     const star = document.createElement("div");
     star.classList.add("star");
     star.style.left = `${Math.random() * 100}%`;
     star.style.animationDuration = `${3 + Math.random() * 5}s`;
     star.style.top = `${-Math.random() * 20}px`;
-    star.addEventListener("click", () => {
-      showWish(wishes[Math.floor(Math.random() * wishes.length)]);
-    });
     section.appendChild(star);
   }
 
-  // Create shooting star after a delay
-  setTimeout(() => {
+  // Button click to trigger shooting star and popup
+  button.addEventListener("click", () => {
+    // Disable button briefly
+    button.disabled = true;
+
+    // Create shooting star
     const shooting = document.createElement("div");
     shooting.classList.add("star", "shooting-star");
     shooting.style.top = "10%";
     shooting.style.left = "5%";
-    shooting.addEventListener("click", () => {
-      showWish("🌟 Surprise! You’re my shooting star. I love you endlessly.");
-    });
     section.appendChild(shooting);
-  }, 3000);
 
-  // Show popup wish
+    // Show wish message shortly after star flies
+    setTimeout(() => {
+      showWish("🌟 Surprise! You’re my shooting star. I love you endlessly.");
+      button.disabled = false;
+    }, 1400);
+  });
+
   function showWish(message) {
     popup.textContent = message;
     popup.classList.remove("hidden");
