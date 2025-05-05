@@ -324,7 +324,47 @@
       0% { transform: translateY(0) translateX(-50%); opacity: 1; }
       100% { transform: translateY(-500px) translateX(-50%); opacity: 0; }
     }
-  </style>
+    </style>
+  
+  <style>
+    /* Basic styling for the Wish in a Bottle section */
+.wish-in-bottle {
+  text-align: center;
+  padding: 2em;
+  background: #f3f3f3;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#bottle-container {
+  position: relative;
+  height: 300px;
+  overflow: hidden; /* Hides the bottle when it rises out of view */
+}
+
+.bottle {
+  width: 50px; /* Bottle width */
+  height: 200px; /* Bottle height */
+  background-color: #e91e63; /* Bottle color */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px; /* Rounded bottle edges */
+  animation: riseAndFade 5s infinite alternate;
+}
+
+@keyframes riseAndFade {
+  0% {
+    transform: translateY(0); /* Start at the bottom */
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    transform: translateY(-500px); /* Move up */
+    opacity: 0; /* Fade out */
+  }
+}
+    
+ </style>
 </head>
 <body>
 
@@ -482,16 +522,16 @@ function blowCandles() {
   </section>
   
   <section class="open-when-section">
-    <h2>Open When...</h2>
+    <h2>Open The WEB When...</h2>
     <div class="envelopes">
       <div class="envelope" onclick="showMessage('When you need a laugh')">
-        <p>Open when you feel you are Alone!</p>
+        <p>Open The WEB when you feel you are Alone!</p>
       </div>
       <div class="envelope" onclick="showMessage('When you're feeling down')">
-        <p>Open when you're feeling down!</p>
+        <p>Open The WEB when you want to Laugh and want comfort!</p>
       </div>
       <div class="envelope" onclick="showMessage('When you want to remember our love')">
-        <p>Open when you want to remember our love!</p>
+        <p>Open when you want to remember our Love!</p>
       </div>
     </div>
     <div id="message-box" class="message-box hidden"></div>
