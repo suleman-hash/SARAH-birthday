@@ -402,31 +402,6 @@ button {
   cursor: pointer;
 }
 
-  
-#wishAnimation {
-  margin-top: 30px;
-  min-height: 100px;
-  position: relative;
-}
-.wish-text {
-  position: absolute;
-  font-size: 20px;
-  color: #ffccff;
-  opacity: 1;
-  animation: floatUp 4s ease-out forwards;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-200px) scale(1.5);
-    opacity: 0;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -624,14 +599,6 @@ function blowCandles() {
     <div id="result3" class="result"></div>
   </div>
 </div>
-
-  
-<section class="wish-blow-section">
-  <h2>Write a Wish and Blow</h2>
-  <textarea id="wishInput" placeholder="Type your birthday wish here..."></textarea>
-  <button onclick="blowWish()">Blow 💨</button>
-  <div id="wishAnimation"></div>
-</section>
 
 <section class="dreams">
     <h2>Dreams to Come True 💖</h2>
@@ -835,32 +802,6 @@ function blowCandles() {
   };
 </script>
   
- <script>
-  function blowWish() {
-    const wishInput = document.getElementById("wishInput");
-    const wishText = wishInput.value.trim();
-    const wishAnimation = document.getElementById("wishAnimation");
-
-    if (wishText === "") return;
-
-    const span = document.createElement("span");
-    span.classList.add("wish-text");
-    span.textContent = wishText;
-
-    // Random position
-    span.style.left = Math.random() * 60 + 20 + "%";
-
-    wishAnimation.appendChild(span);
-
-    // Remove after animation
-    setTimeout(() => {
-      span.remove();
-    }, 4000);
-
-    wishInput.value = "";
-  }
-</script>
-
 <div class="hug-container">
   <button onclick="giveHug()" class="hug-button">Need a Hug?</button>
   <div class="hug-animation" id="hugAnimation">
