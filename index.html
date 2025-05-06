@@ -372,6 +372,60 @@ button {
 .right-arm {
   right: -100px;
 }
+.wish-blow-section {
+  text-align: center;
+  padding: 40px;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+textarea#wishInput {
+  width: 300px;
+  height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  resize: none;
+  background: #333;
+  color: white;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+  
+#wishAnimation {
+  margin-top: 30px;
+  min-height: 100px;
+  position: relative;
+}
+.wish-text {
+  position: absolute;
+  font-size: 20px;
+  color: #ffccff;
+  opacity: 1;
+  animation: floatUp 4s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) scale(1.5);
+    opacity: 0;
+  }
+}
 
 </style>
 </head>
@@ -570,6 +624,13 @@ function blowCandles() {
     <div id="result3" class="result"></div>
   </div>
 </div>
+  
+<section class="wish-blow-section">
+  <h2>Write a Wish and Blow</h2>
+  <textarea id="wishInput" placeholder="Type your birthday wish here..."></textarea>
+  <button onclick="blowWish()">Blow 💨</button>
+  <div id="wishAnimation"></div>
+</section>
 
 <section class="dreams">
     <h2>Dreams to Come True 💖</h2>
@@ -773,73 +834,32 @@ function blowCandles() {
   };
 </script>
   
-<script>
+ <script>
+  function blowWish() {
+    const wishInput = document.getElementById("wishInput");
+    const wishText = wishInput.value.trim();
+    const wishAnimation = document.getElementById("wishAnimation");
 
-    const canvas = document.getElementById('nameCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const text = "Suleman ❤️ Sarah";
+    if (wishText === "") return;
 
-    function resizeCanvas() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      createTextParticles();
-    }
+    const span = document.createElement("span");
+    span.classList.add("wish-text");
+    span.textContent = wishText;
 
-    function createTextParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#fff";
-      ctx.font = "bold 40px Arial";
-      ctx.textAlign = "center";
-      ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+    // Random position
+    span.style.left = Math.random() * 60 + 20 + "%";
 
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      particles = [];
+    wishAnimation.appendChild(span);
 
-      for (let y = 0; y < canvas.height; y += 6) {
-        for (let x = 0; x < canvas.width; x += 6) {
-          const index = (y * canvas.width + x) * 4;
-          if (imageData.data[index + 3] > 128) {
-            particles.push({
-              x: Math.random() * canvas.width,
-              y: Math.random() * canvas.height,
-              tx: x,
-              ty: y,
-              vx: 0,
-              vy: 0
-            });
-          }
-        }
-      }
-    }
+    // Remove after animation
+    setTimeout(() => {
+      span.remove();
+    }, 4000);
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let p of particles) {
-        const dx = p.tx - p.x;
-        const dy = p.ty - p.y;
-        p.vx += dx * 0.01;
-        p.vy += dy * 0.01;
-        p.vx *= 0.9;
-        p.vy *= 0.9;
-        p.x += p.vx;
-        p.y += p.vy;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = "#ff66cc";
-        ctx.fill();
-      }
-      requestAnimationFrame(animate);
-    }
-
-    window.addEventListener('resize', resizeCanvas);
-
-    resizeCanvas();
-    animate();
-  
+    wishInput.value = "";
+  }
 </script>
-  
+
 <div class="hug-container">
   <button onclick="giveHug()" class="hug-button">Need a Hug?</button>
   <div class="hug-animation" id="hugAnimation">
