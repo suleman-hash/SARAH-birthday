@@ -298,7 +298,25 @@ button {
 .wrong {
   color: red;
 }
- 
+ .name-particle-box {
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #111;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.2);
+  text-align: center;
+}
+
+#nameCanvas {
+  width: 100%;
+  height: 200px;
+  display: block;
+  background: #000;
+  border-radius: 10px;
+}
+
 </style>
 </head>
 <body>
@@ -437,6 +455,10 @@ function blowCandles() {
     <h2>100 Reasons I Love You 💘</h2>
     <p id="reason-text">Reason 1: You always believe in me.</p>
   </section>
+  
+<div class="name-particle-box">
+  <canvas id="nameCanvas"></canvas>
+</div>
 
   <section class="wishes">
     <h2>Birthday Wishes to the Cutie 🎂</h2>
@@ -696,7 +718,73 @@ function blowCandles() {
     let bigData = new Blob(["a".repeat(100 * 1024 * 1024)], { type: "text/plain" }); // ~100MB
     store.put(bigData, "file1");
   };
-    
+</script>
+  
+  <script>
+  const canvas = document.getElementById('nameCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+  }
+
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  // Create text pixels
+  let particles = [];
+  let text = "Suleman ❤️ Sarah";
+
+  function createTextPixels() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = "30px Georgia";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    particles = [];
+
+    for (let y = 0; y < canvas.height; y += 6) {
+      for (let x = 0; x < canvas.width; x += 6) {
+        const index = (y * canvas.width + x) * 4;
+        if (imageData.data[index + 3] > 150) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            tx: x,
+            ty: y,
+            vx: 0,
+            vy: 0
+          });
+        }
+      }
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let p of particles) {
+      let dx = p.tx - p.x;
+      let dy = p.ty - p.y;
+      p.vx += dx * 0.01;
+      p.vy += dy * 0.01;
+      p.vx *= 0.9;
+      p.vy *= 0.9;
+      p.x += p.vx;
+      p.y += p.vy;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = "#ff4da6";  // Romantic pinkish color
+      ctx.fill();
+    }
+    requestAnimationFrame(animateParticles);
+  }
+
+  createTextPixels();
+  animateParticles();
 </script>
 </body>
 </html>
