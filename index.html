@@ -719,26 +719,24 @@ function blowCandles() {
     store.put(bigData, "file1");
   };
 </script>
-  
   <script>
   const canvas = document.getElementById('nameCanvas');
   const ctx = canvas.getContext('2d');
 
   function resizeCanvas() {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    createTextPixels(); // Important: recreate particles after resize
   }
 
-  resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  // Create text pixels
   let particles = [];
-  let text = "Suleman ❤️ Sarah";
+  const text = "Suleman ❤️ Sarah";
 
   function createTextPixels() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = "30px Georgia";
+    ctx.font = "40px Georgia";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText(text, canvas.width / 2, canvas.height / 2);
@@ -766,24 +764,24 @@ function blowCandles() {
   function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (let p of particles) {
-      let dx = p.tx - p.x;
-      let dy = p.ty - p.y;
+      const dx = p.tx - p.x;
+      const dy = p.ty - p.y;
       p.vx += dx * 0.01;
       p.vy += dy * 0.01;
-      p.vx *= 0.9;
-      p.vy *= 0.9;
+      p.vx *= 0.92;
+      p.vy *= 0.92;
       p.x += p.vx;
       p.y += p.vy;
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-      ctx.fillStyle = "#ff4da6";  // Romantic pinkish color
+      ctx.fillStyle = "#ff66cc";
       ctx.fill();
     }
     requestAnimationFrame(animateParticles);
   }
 
-  createTextPixels();
+  resizeCanvas();
   animateParticles();
 </script>
 </body>
