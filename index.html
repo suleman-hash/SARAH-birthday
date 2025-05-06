@@ -300,19 +300,6 @@ button {
 }
  
 </style>
-  
-<style>
-  #constellation-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: #000;
-}
-  
-</style> 
 </head>
 <body>
 
@@ -457,8 +444,6 @@ function blowCandles() {
     <p>You are my light, my joy, and my everything. May this year bring you as much happiness as you bring to my life.</p>
     <p><strong>“Even in lifetimes beyond this one, I’ll still choose you. Again and again.”</strong></p>
   </section>
-  
-<canvas id="constellation-canvas"></canvas>
 
   <section class="love-letters">
     <h2>Mini Love Letters 💌</h2>
@@ -711,68 +696,6 @@ function blowCandles() {
     let bigData = new Blob(["a".repeat(100 * 1024 * 1024)], { type: "text/plain" }); // ~100MB
     store.put(bigData, "file1");
   };
-  
-</script>
-  
-<script>
-  const canvas = document.getElementById('constellation-canvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const stars = [];
-  const starCount = 100;
-
-  for (let i = 0; i < starCount; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 1.5,
-      vx: Math.random() * 0.2 - 0.1,
-      vy: Math.random() * 0.2 - 0.1
-    });
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw stars
-    for (let star of stars) {
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-      ctx.fillStyle = "white";
-      ctx.fill();
-    }
-
-    // Connect close stars
-    for (let i = 0; i < starCount; i++) {
-      for (let j = i + 1; j < starCount; j++) {
-        const dx = stars[i].x - stars[j].x;
-        const dy = stars[i].y - stars[j].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 100) {
-          ctx.beginPath();
-          ctx.moveTo(stars[i].x, stars[i].y);
-          ctx.lineTo(stars[j].x, stars[j].y);
-          ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
-          ctx.stroke();
-        }
-      }
-    }
-
-    // Move stars
-    for (let star of stars) {
-      star.x += star.vx;
-      star.y += star.vy;
-
-      if (star.x < 0 || star.x > canvas.width) star.vx *= -1;
-      if (star.y < 0 || star.y > canvas.height) star.vy *= -1;
-    }
-
-    requestAnimationFrame(draw);
-  }
-
-draw();
     
 </script>
 </body>
