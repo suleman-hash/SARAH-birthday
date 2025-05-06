@@ -315,6 +315,67 @@ button {
   font-weight: bold;
   color: #ff66cc;
 }
+   
+.hug-container {
+  text-align: center;
+  margin: 50px auto;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.hug-button {
+  background-color: #ff69b4;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.hug-button:hover {
+  background-color: #ff1493;
+}
+
+.hug-animation {
+  position: relative;
+  margin-top: 20px;
+  height: 200px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.arm {
+  width: 100px;
+  height: 30px;
+  background-color: #ffb6c1;
+  border-radius: 15px;
+  position: absolute;
+  top: 50%;
+  transition: all 1s ease;
+  opacity: 0;
+}
+
+.left-arm {
+  left: -120px;
+}
+
+.right-arm {
+  right: -120px;
+}
+
+.hug-message {
+  margin-top: 100px;
+  font-size: 18px;
+  color: #ff1493;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
 
 </style>
 </head>
@@ -783,8 +844,35 @@ function blowCandles() {
   
 </script>
   
+  <div class="hug-container">
+  <button onclick="giveHug()" class="hug-button">Need a Hug?</button>
+  <div class="hug-animation" id="hugAnimation">
+    <div class="arm left-arm"></div>
+    <div class="arm right-arm"></div>
+    <div class="hug-message">Here's your virtual hug from me 💞</div>
+  </div>
+</div>
+  
+<script>
+function giveHug() {
+  const hugBox = document.getElementById('hugAnimation');
+  hugBox.style.display = 'flex';
+
+  setTimeout(() => {
+    hugBox.querySelector('.left-arm').style.left = '80px';
+    hugBox.querySelector('.left-arm').style.opacity = '1';
+    hugBox.querySelector('.right-arm').style.right = '80px';
+    hugBox.querySelector('.right-arm').style.opacity = '1';
+  }, 100);
+
+  setTimeout(() => {
+    hugBox.querySelector('.hug-message').style.opacity = '1';
+  }, 1200);
+}
+</script>
+
   <footer class="signature-love">
-    <p><span class="name">Suleman</span>💖<span class="name">Sarah</span></p>
+    <p><span class="name">Suleman</span> 💖 <span class="name">Sarah</span></p>
   </footer>
 
 </body>
