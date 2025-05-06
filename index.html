@@ -338,15 +338,20 @@ button {
 .hug-button:hover {
   background-color: #ff1493;
 }
-
+ 
 .hug-animation {
   position: relative;
   margin-top: 20px;
   height: 200px;
+  width: 100%;
   display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #fff0f5;
+  border-radius: 20px;
+  overflow: hidden;
+  padding-top: 50px;
 }
 
 .arm {
@@ -355,26 +360,17 @@ button {
   background-color: #ffb6c1;
   border-radius: 15px;
   position: absolute;
-  top: 50%;
+  top: 50px;
   transition: all 1s ease;
   opacity: 0;
 }
 
 .left-arm {
-  left: -120px;
+  left: -100px;
 }
 
 .right-arm {
-  right: -120px;
-}
-
-.hug-message {
-  margin-top: 100px;
-  font-size: 18px;
-  color: #ff1493;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 1s ease;
+  right: -100px;
 }
 
 </style>
@@ -844,7 +840,7 @@ function blowCandles() {
   
 </script>
   
-  <div class="hug-container">
+<div class="hug-container">
   <button onclick="giveHug()" class="hug-button">Need a Hug?</button>
   <div class="hug-animation" id="hugAnimation">
     <div class="arm left-arm"></div>
@@ -859,9 +855,9 @@ function giveHug() {
   hugBox.style.display = 'flex';
 
   setTimeout(() => {
-    hugBox.querySelector('.left-arm').style.left = '80px';
+    hugBox.querySelector('.left-arm').style.left = '50px';
     hugBox.querySelector('.left-arm').style.opacity = '1';
-    hugBox.querySelector('.right-arm').style.right = '80px';
+    hugBox.querySelector('.right-arm').style.right = '50px';
     hugBox.querySelector('.right-arm').style.opacity = '1';
   }, 100);
 
